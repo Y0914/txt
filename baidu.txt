@@ -56,11 +56,12 @@ dns:
 proxy-groups:
 
   - name: 百度
-    type: load-balance
+    type: url-test
     proxies:
       - Baidu Nanjing
       - Baidu Suzhou
       - Baidu Guangdong
+    lazy: true
     url: 'http://connect.rom.miui.com/generate_204'
     interval: 300
 
