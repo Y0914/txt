@@ -1,9 +1,8 @@
-# Port of SOCKS5 proxy server on the local end
+
 socks-port: 1080
 port: 1081
 
 mode: rule
-# info / warning / error / debug / silent
 log-level: debug
 
 external-controller: 127.0.0.1:9090
@@ -27,18 +26,15 @@ dns:
   default-nameserver:
     - 119.29.29.29
     - 8.8.8.8
-  enhanced-mode: redir-host # redir-host or fake-ip
-  fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  enhanced-mode: redir-host 
+  fake-ip-range: 198.18.0.1/16 
   nameserver:
     - https://doh.pub/dns-query
-    # - https://dns.google/dns-query
-    - https://dns.alidns.com/dns-query # default value
-    # - 1.1.1.1 # default value
-    # - https://1.1.1.1/dns-query # DNS over HTTPS
+    - https://dns.alidns.com/dns-query
+    
   fallback:
     - https://cloudflare-dns.com/dns-query
     - https://dns.google/dns-query
-    # - https://1.0.0.1/dns-query
   fallback-filter:
     geoip: true
     geoip-code: CN
@@ -59,7 +55,7 @@ dns:
 
 proxy-groups:
 
-  - name: 国内
+  - name: 百度
     type: load-balance
     proxies:
       - Baidu Nanjing
@@ -743,10 +739,5 @@ rules:
   - DOMAIN-SUFFIX,hivedata.cc,REJECT
   - DOMAIN-SUFFIX,navi.gd.chinamobile.com,REJECT
 
-  - GEOIP,CN,国内
-  # - DST-PORT,80,国内
-  # - DST-PORT,443,国内
-  # - DST-PORT,8080,国内
-  # - DST-PORT,8081,国内
-  # - DST-PORT,8443,国内
-  - MATCH,国内
+  - GEOIP,CN,百度
+  - MATCH,百度
