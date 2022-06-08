@@ -61,7 +61,6 @@ proxy-groups:
       - Baidu Nanjing
       - Baidu Suzhou
       - Baidu Guangdong
-    lazy: true
     url: 'http://connect.rom.miui.com/generate_204'
     interval: 300
 
